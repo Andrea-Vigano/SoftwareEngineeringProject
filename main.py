@@ -15,6 +15,8 @@ class PIRField:
     def __contains__(self, item):
         pass
 
+class PIR_Test:
+    pass
 
 class PIRText(PIRField):
     pass
