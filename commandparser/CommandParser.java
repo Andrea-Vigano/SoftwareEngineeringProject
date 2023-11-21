@@ -1,16 +1,15 @@
 package commandparser;
 
-import models.PIR;
 import repositories.PIRRepository;
 
 import java.io.PrintStream;
 import java.util.Scanner;
 
 public class CommandParser {
-    final private PIRRepository<PIR>[] repositories;
+    final private PIRRepository<?>[] repositories;
     final private Scanner scanner;
     final private PrintStream printStream;
-    public CommandParser(PIRRepository<PIR>[] repositories, Scanner scanner, PrintStream printStream) {
+    public CommandParser(PIRRepository<?>[] repositories, Scanner scanner, PrintStream printStream) {
         this.repositories = repositories;
         this.scanner = scanner;
         this.printStream = printStream;
@@ -57,9 +56,8 @@ public class CommandParser {
         Integer id = this.scanner.nextInt();
         this.scanner.nextLine();
         int index = this.getRepositoryIndex(command);
-        PIR pir = repositories[index].find(id);
-        if (pir != null) repositories[index].print(pir);
-        else this.printStream.println("Unable to find plain text PIR with id: " + id);
+        Boolean result = repositories[index].findAndPrint(id);
+        if (!result) this.printStream.println("Unable to find plain text PIR with id: " + id);
     }
 
     private int getRepositoryIndex(Command command) {

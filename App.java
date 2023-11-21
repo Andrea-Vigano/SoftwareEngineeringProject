@@ -1,7 +1,6 @@
 import commandparser.Command;
 import commandparser.CommandParser;
 import io.IO;
-import models.PIR;
 import repositories.*;
 
 import java.io.PrintStream;
@@ -12,13 +11,12 @@ public class App {
     static private final PrintStream printStream = IO.printStream;
     private final CommandParser commandParser;
 
-    public App(PIRRepository<PIR>[] repositories) {
+    public App(PIRRepository<?>[] repositories) {
         this.commandParser = new CommandParser(repositories, scanner, printStream);
     }
 
     static public void main(String[] args) {
-        // TODO try fix parametrization
-        PIRRepository[] repositories = {
+        PIRRepository<?>[] repositories = {
                 new PlainTextPIRRepository(App.scanner, App.printStream),
                 new TaskPIRRepository(App.scanner, App.printStream),
                 new EventPIRRepository(App.scanner, App.printStream),

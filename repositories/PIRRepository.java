@@ -49,12 +49,20 @@ public abstract class PIRRepository<T extends PIR> {
         }
         return false;
     }
-    public T find(Integer pirId) {
+    protected T find(Integer pirId) {
         for (T pir : data) {
             if (Objects.equals(pir.getId(), pirId))
                 return pir;
         }
         return null;
+    }
+    public Boolean findAndPrint(Integer pirId) {
+        T pir = this.find(pirId);
+        if (pir != null) {
+            this.print(pir);
+            return true;
+        }
+        return false;
     }
     protected Boolean edit(T pir) {
         Boolean result = this.remove(pir.getId());
