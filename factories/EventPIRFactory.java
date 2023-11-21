@@ -2,9 +2,15 @@ package factories;
 
 import models.EventPIR;
 
+import java.io.PrintStream;
 import java.time.LocalDateTime;
+import java.util.Scanner;
 
 public class EventPIRFactory extends PIRFactory<EventPIR> {
+    public EventPIRFactory(Scanner scanner, PrintStream printStream) {
+        super(scanner, printStream);
+    }
+
     @Override
     protected EventPIR createPIR(Integer id) {
         String text = this.getText("Type the description of the event you wish to store: ");

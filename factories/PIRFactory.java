@@ -13,9 +13,9 @@ public abstract class PIRFactory<T extends PIR> {
     protected PrintStream printStream;
     protected final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss a");
 
-    public PIRFactory() {
-        this.scanner = new Scanner(System.in);
-        this.printStream = System.out;
+    public PIRFactory(Scanner scanner, PrintStream printStream) {
+        this.scanner = scanner;
+        this.printStream = printStream;
     }
 
     public T createPIR() {

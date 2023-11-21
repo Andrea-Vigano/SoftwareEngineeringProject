@@ -2,7 +2,14 @@ package factories;
 
 import models.ContactPIR;
 
+import java.io.PrintStream;
+import java.util.Scanner;
+
 public class ContactPIRFactory extends PIRFactory<ContactPIR> {
+
+    public ContactPIRFactory(Scanner scanner, PrintStream printStream) {
+        super(scanner, printStream);
+    }
 
     @Override
     protected ContactPIR createPIR(Integer id) {

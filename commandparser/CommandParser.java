@@ -3,14 +3,17 @@ package commandparser;
 import models.PIR;
 import repositories.PIRRepository;
 
+import java.io.PrintStream;
 import java.util.Scanner;
 
 public class CommandParser {
     final private PIRRepository<PIR>[] repositories;
     final private Scanner scanner;
-    public CommandParser(PIRRepository<PIR>[] repositories, Scanner scanner) {
+    final private PrintStream printStream;
+    public CommandParser(PIRRepository<PIR>[] repositories, Scanner scanner, PrintStream printStream) {
         this.repositories = repositories;
         this.scanner = scanner;
+        this.printStream = printStream;
     }
 
     public void parse(Command command) {
@@ -28,35 +31,35 @@ public class CommandParser {
     private void performAdd(Command command) {
         int index = this.getRepositoryIndex(command);
         Boolean result = repositories[index].createAndAdd();
-        if (result) System.out.println("Successfully added PIR");
-        else System.out.println("Failed to add PIR");
+        if (result) this.printStream.println("Successfully added PIR");
+        else this.printStream.println("Failed to add PIR");
     }
 
     private void performEdit(Command command) {
         int index = this.getRepositoryIndex(command);
         Boolean result = repositories[index].createAndEdit();
-        if (result) System.out.println("Successfully updated PIR");
-        else System.out.println("Failed to update PIR");
+        if (result) this.printStream.println("Successfully updated PIR");
+        else this.printStream.println("Failed to update PIR");
     }
 
     private void performRm(Command command) {
-        System.out.println("Insert the id: ");
+        this.printStream.println("Insert the id: ");
         Integer id = this.scanner.nextInt();
         this.scanner.nextLine();
         int index = this.getRepositoryIndex(command);
         Boolean result = repositories[index].remove(id);
-        if (result) System.out.println("Successfully removed pir with id: " + id);
-        else System.out.println("Unable to remove pir with id: " + id);
+        if (result) this.printStream.println("Successfully removed pir with id: " + id);
+        else this.printStream.println("Unable to remove pir with id: " + id);
     }
 
     private void performFind(Command command) {
-        System.out.println("Insert the id: ");
+        this.printStream.println("Insert the id: ");
         Integer id = this.scanner.nextInt();
         this.scanner.nextLine();
         int index = this.getRepositoryIndex(command);
         PIR pir = repositories[index].find(id);
         if (pir != null) repositories[index].print(pir);
-        else System.out.println("Unable to find plain text PIR with id: " + id);
+        else this.printStream.println("Unable to find plain text PIR with id: " + id);
     }
 
     private int getRepositoryIndex(Command command) {

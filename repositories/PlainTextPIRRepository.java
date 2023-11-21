@@ -4,8 +4,14 @@ import factories.PlainTextPIRFactory;
 import models.PlainTextPIR;
 import printer.PlainTextPIRPrinter;
 
+import java.io.PrintStream;
+import java.util.Scanner;
+
 public class PlainTextPIRRepository extends PIRRepository<PlainTextPIR> {
-    public PlainTextPIRRepository() {
-        super(new PlainTextPIRPrinter(System.out), new PlainTextPIRFactory());
+    public PlainTextPIRRepository(Scanner scanner, PrintStream printStream) {
+        super(
+                new PlainTextPIRPrinter(printStream),
+                new PlainTextPIRFactory(scanner, printStream)
+        );
     }
 }
