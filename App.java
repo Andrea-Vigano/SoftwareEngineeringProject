@@ -1,7 +1,7 @@
 import commandparser.Command;
 import commandparser.CommandParser;
-import repositories.PIRRepository;
-import repositories.PlainTextPIRRepository;
+import models.PIR;
+import repositories.*;
 
 import java.util.Scanner;
 
@@ -9,12 +9,18 @@ public class App {
     static private final Scanner scanner = new Scanner(System.in);
     private final CommandParser commandParser;
 
-    public App(PIRRepository[] repositories) {
+    public App(PIRRepository<PIR>[] repositories) {
         this.commandParser = new CommandParser(repositories, scanner);
     }
 
     static public void main(String[] args) {
-        PIRRepository[] repositories = { new PlainTextPIRRepository() };
+        // TODO try fix parametrization
+        PIRRepository[] repositories = {
+                new PlainTextPIRRepository(),
+                new TaskPIRRepository(),
+                new EventPIRRepository(),
+                new ContactPIRRepository()
+        };
         App app = new App(repositories);
         app.run();
     }

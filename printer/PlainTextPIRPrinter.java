@@ -1,22 +1,16 @@
 package printer;
 
-import models.IPIR;
 import models.PlainTextPIR;
 
 import java.io.PrintStream;
 
-public class PlainTextPIRPrinter extends PIRPrinter {
+public class PlainTextPIRPrinter extends PIRPrinter<PlainTextPIR> {
     public PlainTextPIRPrinter(PrintStream outputStream) {
         super(outputStream);
     }
 
     @Override
-    public void print(IPIR pir) {
-        try {
-            PlainTextPIR plainTextPIR = (PlainTextPIR) pir;
-            this.outputStream.println(plainTextPIR.getId() + ": " + plainTextPIR.getText());
-        } catch (Exception e) {
-            this.outputStream.println("An internal error occurred");
-        }
+    public void print(PlainTextPIR pir) {
+        this.outputStream.println(pir.getId() + ": " + pir.getText());
     }
 }

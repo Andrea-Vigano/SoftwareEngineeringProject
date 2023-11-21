@@ -1,17 +1,18 @@
 package repositories;
 
 import factories.PIRFactory;
-import models.IPIR;
+import models.PIR;
 import printer.PIRPrinter;
 
 import java.util.ArrayList;
 import java.util.Objects;
 
-public abstract class PIRRepository<T extends IPIR> {
-    protected PIRPrinter printer;
+public abstract class PIRRepository<T extends PIR> {
+    protected PIRPrinter<T> printer;
     protected PIRFactory<T> pirFactory;
     protected final ArrayList<T> data = new ArrayList<>();
-    public PIRRepository(PIRPrinter printer, PIRFactory<T> pirFactory) {
+
+    public PIRRepository(PIRPrinter<T> printer, PIRFactory<T> pirFactory) {
         this.printer = printer;
         this.pirFactory = pirFactory;
     }
@@ -24,7 +25,7 @@ public abstract class PIRRepository<T extends IPIR> {
         T pir = this.pirFactory.createPIR();
         return this.add(pir);
     }
-    protected Boolean isUniqueId(IPIR pir) {
+    protected Boolean isUniqueId(T pir) {
         for (T storedPir : data) {
             if (Objects.equals(storedPir.getId(), pir.getId()))
                 return false;
@@ -48,7 +49,7 @@ public abstract class PIRRepository<T extends IPIR> {
         }
         return false;
     }
-    public IPIR find(Integer pirId) {
+    public T find(Integer pirId) {
         for (T pir : data) {
             if (Objects.equals(pir.getId(), pirId))
                 return pir;
@@ -64,7 +65,7 @@ public abstract class PIRRepository<T extends IPIR> {
         T pir = this.pirFactory.createPIR();
         return this.edit(pir);
     }
-    public void print(IPIR pir) {
+    public void print(T pir) {
         this.printer.print(pir);
     }
 }

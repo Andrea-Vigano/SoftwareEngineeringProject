@@ -1,13 +1,15 @@
 package factories;
 
-import models.IPIR;
+import models.PIR;
 
 import java.io.PrintStream;
+import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
-
-public abstract class PIRFactory<T extends IPIR> {
+// TODO setup external exception managers for input control
+public abstract class PIRFactory<T extends PIR> {
     protected Scanner scanner;
     protected PrintStream printStream;
+    protected final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss a");
 
     public PIRFactory() {
         this.scanner = new Scanner(System.in);
