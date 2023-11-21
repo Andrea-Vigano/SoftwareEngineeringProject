@@ -1,6 +1,7 @@
 package commandparser;
 
 import repositories.PIRRepository;
+import search.SearchCondition;
 
 import java.io.PrintStream;
 import java.util.Scanner;
@@ -24,6 +25,8 @@ public class CommandParser {
             performRm(command);
         } else if (command.isFind()) {
             performFind(command);
+        } else if (command.isSearch()) {
+            performSearch(command);
         }
     }
 
@@ -58,6 +61,14 @@ public class CommandParser {
         int index = this.getRepositoryIndex(command);
         Boolean result = repositories[index].findAndPrint(id);
         if (!result) this.printStream.println("Unable to find plain text PIR with id: " + id);
+    }
+
+    private void performSearch(Command command) {
+        this.printStream.println("Type the search condition you wish to apply: ");
+        String condition = this.scanner.nextLine();
+        int index = this.getRepositoryIndex(command);
+        Boolean result = repositories[index].search(condition);
+        if (!result) this.printStream.println("Unable to parse condition: " + condition);
     }
 
     private int getRepositoryIndex(Command command) {

@@ -3,6 +3,8 @@ package repositories;
 import factories.PIRFactory;
 import models.PIR;
 import printer.PIRPrinter;
+import search.SearchCondition;
+import search.SearchStringParser;
 
 import java.util.ArrayList;
 import java.util.Objects;
@@ -12,9 +14,12 @@ public abstract class PIRRepository<T extends PIR> {
     protected PIRFactory<T> pirFactory;
     protected final ArrayList<T> data = new ArrayList<>();
 
-    public PIRRepository(PIRPrinter<T> printer, PIRFactory<T> pirFactory) {
+    protected final SearchStringParser<T> searchStringParser;
+
+    public PIRRepository(PIRPrinter<T> printer, PIRFactory<T> pirFactory, SearchStringParser<T> searchStringParser) {
         this.printer = printer;
         this.pirFactory = pirFactory;
+        this.searchStringParser = searchStringParser;
     }
     protected Boolean add(T pir) {
         if (!isUniqueId(pir))
@@ -73,6 +78,31 @@ public abstract class PIRRepository<T extends PIR> {
         T pir = this.pirFactory.createPIR();
         return this.edit(pir);
     }
+
+    private SearchCondition<T> parse(String condition) {
+        return searchStringParser.parse(condition);
+    }
+
+    private ArrayList<T> applyCondition(SearchCondition<T> condition) {
+        ArrayList<T> values = new ArrayList<>();
+        for (T pir : this.data) {
+            if (condition.evaluate(pir)) values.add(pir);
+        }
+        return values;
+    }
+
+    private void applyConditionAndPrint(SearchCondition<T> condition) {
+        ArrayList<T> values = this.applyCondition(condition);
+        for (T pir : values) this.print(pir);
+    }
+
+    public Boolean search(String condition) {
+        SearchCondition<T> searchCondition = this.parse(condition);
+        if (searchCondition == null) return false;
+        applyConditionAndPrint(searchCondition);
+        return true;
+    }
+
     public void print(T pir) {
         this.printer.print(pir);
     }
