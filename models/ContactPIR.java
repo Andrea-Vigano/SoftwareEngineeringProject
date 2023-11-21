@@ -1,5 +1,4 @@
 package models;
-// TODO better implement address and phone number (?)
 public class ContactPIR extends PIR {
     private final String name;
     private final String address;
