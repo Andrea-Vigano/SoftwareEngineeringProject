@@ -7,6 +7,7 @@ public enum COMMAND_TYPES {
     EDIT("edit"),
     RM("rm"),
     FIND("find"),
+    SEARCH("search"),
     EXIT("exit");
 
     private final String value;

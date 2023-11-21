@@ -38,6 +38,10 @@ public class Command {
         return this.is(COMMAND_TYPES.FIND);
     }
 
+    public Boolean isSearch() {
+        return this.is(COMMAND_TYPES.SEARCH);
+    }
+
     public Boolean isExit() {
         return this.is(COMMAND_TYPES.EXIT);
     }

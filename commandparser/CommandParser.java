@@ -1,7 +1,6 @@
 package commandparser;
 
 import repositories.PIRRepository;
-import search.SearchCondition;
 
 import java.io.PrintStream;
 import java.util.Scanner;
