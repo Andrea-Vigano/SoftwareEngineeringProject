@@ -1,6 +1,5 @@
 import commandparser.Command;
 import commandparser.CommandParser;
-import models.PIR;
 import repositories.PIRRepository;
 import repositories.PlainTextPIRRepository;
 

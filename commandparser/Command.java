@@ -3,11 +3,9 @@ package commandparser;
 import models.PIR_TYPES;
 
 public class Command {
-    private final String rawCommand;
     private String operation = "";
     private String type = "";
     public Command(String rawCommand) {
-        this.rawCommand = rawCommand;
         if (!this.isExit()) {
             String[] components = rawCommand.split(" ");
             operation = components[0];

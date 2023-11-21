@@ -1,6 +1,6 @@
 package printer;
 
-import models.PIR;
+import models.IPIR;
 
 import java.io.PrintStream;
 
@@ -9,5 +9,5 @@ public abstract class PIRPrinter {
     public PIRPrinter(PrintStream outputStream) {
         this.outputStream = outputStream;
     }
-    public abstract void print(PIR pir);
+    public abstract void print(IPIR pir);
 }

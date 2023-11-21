@@ -1,6 +1,5 @@
 package factories;
 
-import models.PIR;
 import models.PlainTextPIR;
 
 public class PlainTextPIRFactory extends PIRFactory<PlainTextPIR> {

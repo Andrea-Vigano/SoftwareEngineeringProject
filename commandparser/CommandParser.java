@@ -1,6 +1,6 @@
 package commandparser;
 
-import models.PIR;
+import models.IPIR;
 import repositories.PIRRepository;
 
 import java.util.Scanner;
@@ -54,7 +54,7 @@ public class CommandParser {
         Integer id = this.scanner.nextInt();
         this.scanner.nextLine();
         int index = this.getRepositoryIndex(command);
-        PIR pir = repositories[index].find(id);
+        IPIR pir = repositories[index].find(id);
         if (pir != null) repositories[index].print(pir);
         else System.out.println("Unable to find plain text PIR with id: " + id);
     }

@@ -1,11 +1,11 @@
 package factories;
 
-import models.PIR;
+import models.IPIR;
 
 import java.io.PrintStream;
 import java.util.Scanner;
 
-public abstract class PIRFactory<T extends PIR> {
+public abstract class PIRFactory<T extends IPIR> {
     protected Scanner scanner;
     protected PrintStream printStream;
 

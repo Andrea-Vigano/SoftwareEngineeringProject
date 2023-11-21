@@ -1,6 +1,6 @@
 package printer;
 
-import models.PIR;
+import models.IPIR;
 import models.PlainTextPIR;
 
 import java.io.PrintStream;
@@ -11,7 +11,7 @@ public class PlainTextPIRPrinter extends PIRPrinter {
     }
 
     @Override
-    public void print(PIR pir) {
+    public void print(IPIR pir) {
         try {
             PlainTextPIR plainTextPIR = (PlainTextPIR) pir;
             this.outputStream.println(plainTextPIR.getId() + ": " + plainTextPIR.getText());

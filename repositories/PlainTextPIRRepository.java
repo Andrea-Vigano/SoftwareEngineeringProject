@@ -8,4 +8,4 @@ public class PlainTextPIRRepository extends PIRRepository<PlainTextPIR> {
     public PlainTextPIRRepository() {
         super(new PlainTextPIRPrinter(System.out), new PlainTextPIRFactory());
     }
-};
+}
