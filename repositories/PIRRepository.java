@@ -3,30 +3,65 @@ package repositories;
 import factories.PIRFactory;
 import models.PIR;
 import printer.PIRPrinter;
-// TODO bring up implementation of remove, find and isUniqueId with data iterator abstract method
-public abstract class PIRRepository {
+
+import java.util.ArrayList;
+import java.util.Objects;
+
+public abstract class PIRRepository<T extends PIR> {
     protected PIRPrinter printer;
-    protected PIRFactory pirFactory;
-    protected Boolean add(PIR pir) {
+    protected PIRFactory<T> pirFactory;
+    protected final ArrayList<T> data = new ArrayList<>();
+    public PIRRepository(PIRPrinter printer, PIRFactory<T> pirFactory) {
+        this.printer = printer;
+        this.pirFactory = pirFactory;
+    }
+    protected Boolean add(T pir) {
         if (!isUniqueId(pir))
             return false;
         return this.performAdd(pir);
     }
     public Boolean createAndAdd() {
-        PIR pir = this.pirFactory.createPIRForAdd();
+        T pir = this.pirFactory.createPIR();
         return this.add(pir);
     }
-    protected abstract Boolean isUniqueId(PIR pir);
-    protected abstract Boolean performAdd(PIR pir);
-    public abstract Boolean remove(Integer pirId);
-    public abstract PIR find(Integer pirId);
-    protected Boolean edit(PIR pir) {
+    protected Boolean isUniqueId(PIR pir) {
+        for (T storedPir : data) {
+            if (Objects.equals(storedPir.getId(), pir.getId()))
+                return false;
+        }
+        return true;
+    }
+    protected Boolean performAdd(T pir) {
+        try {
+            data.add(pir);
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
+    }
+    public Boolean remove(Integer pirId) {
+        for (T pir : data) {
+            if (Objects.equals(pir.getId(), pirId)) {
+                data.remove(pir);
+                return true;
+            }
+        }
+        return false;
+    }
+    public PIR find(Integer pirId) {
+        for (T pir : data) {
+            if (Objects.equals(pir.getId(), pirId))
+                return pir;
+        }
+        return null;
+    }
+    protected Boolean edit(T pir) {
         Boolean result = this.remove(pir.getId());
         if (!result) return false;
         return this.add(pir);
     }
     public Boolean createAndEdit() {
-        PIR pir = this.pirFactory.createPIRForEdit();
+        T pir = this.pirFactory.createPIR();
         return this.edit(pir);
     }
     public void print(PIR pir) {

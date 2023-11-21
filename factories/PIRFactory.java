@@ -5,7 +5,7 @@ import models.PIR;
 import java.io.PrintStream;
 import java.util.Scanner;
 
-public abstract class PIRFactory {
+public abstract class PIRFactory<T extends PIR> {
     protected Scanner scanner;
     protected PrintStream printStream;
 
@@ -14,17 +14,12 @@ public abstract class PIRFactory {
         this.printStream = System.out;
     }
 
-    public PIR createPIRForAdd() {
+    public T createPIR() {
         int id = this.getId();
-        return this.createPIRForAdd(id);
+        return this.createPIR(id);
     }
 
-    protected abstract PIR createPIRForAdd(Integer id);
-    public PIR createPIRForEdit() {
-        int id = this.getId();
-        return this.createPIRForEdit(id);
-    }
-    protected abstract PIR createPIRForEdit(Integer id);
+    protected abstract T createPIR(Integer id);
 
     private Integer getId() {
         printStream.println("Insert the id: ");
