@@ -8,7 +8,9 @@ public enum COMMAND_TYPES {
     RM("rm"),
     FIND("find"),
     SEARCH("search"),
-    EXIT("exit");
+    EXIT("exit"),
+    SAVE("save"),
+    LOAD("load");
 
     private final String value;
 

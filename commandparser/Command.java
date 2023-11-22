@@ -8,6 +8,7 @@ public class Command {
     public Command(String rawCommand) {
         if (!this.isExit()) {
             String[] components = rawCommand.split(" ");
+            if (components.length != 2) { return;}  // Invalid input
             operation = components[0];
             type = components[1];
         }
@@ -45,6 +46,10 @@ public class Command {
     public Boolean isExit() {
         return this.is(COMMAND_TYPES.EXIT);
     }
+
+    public Boolean isSave() { return this.is(COMMAND_TYPES.SAVE);}
+
+    public Boolean isLoad() { return this.is(COMMAND_TYPES.LOAD);}
 
     public Boolean isPlainText() {
         return this.is(PIR_TYPES.PLAIN_TEXT);

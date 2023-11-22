@@ -26,7 +26,15 @@ public class CommandParser {
             performFind(command);
         } else if (command.isSearch()) {
             performSearch(command);
+        } else if (command.isSave()) {
+            performSave(command);
+        } else if (command.isLoad()) {
+            performLoad(command);
+        } else{        // Invalid input
+            performInvalid();
         }
+
+
     }
 
     private void performAdd(Command command) {
@@ -76,5 +84,19 @@ public class CommandParser {
         else if (command.isEvent()) return 2;
         else if (command.isContact()) return 3;
         return -1;
+    }
+
+    private void performSave(Command command) {
+        // to do: save current repository
+        ;
+    }
+
+    private void performLoad(Command command) {
+        // to do: load the repository in the file to the memory;
+        ;
+    }
+
+    private void performInvalid() {
+        this.printStream.println("Invalid Input!");
     }
 }
