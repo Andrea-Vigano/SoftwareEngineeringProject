@@ -2,6 +2,7 @@ package commandparser;
 
 import repositories.PIRRepository;
 
+import java.io.IOException;
 import java.io.PrintStream;
 import java.util.Scanner;
 
@@ -30,7 +31,7 @@ public class CommandParser {
             performSave(command);
         } else if (command.isLoad()) {
             performLoad(command);
-        } else{        // Invalid input
+        } else {        // Invalid input
             performInvalid();
         }
 
@@ -87,13 +88,21 @@ public class CommandParser {
     }
 
     private void performSave(Command command) {
-        // to do: save current repository
-        ;
+        try {
+            String[] repo_list = {"PlainText", "Task", "Event", "Contact"};
+            PrintStream fileStream = new PrintStream(command.getdir());
+            for (int index = 0; index < 4; ++index) {
+                fileStream.println(repo_list[index]);
+                repositories[index].save(fileStream);
+            }
+        } catch (IOException e) {
+            System.out.println("IOException");
+        }
     }
 
     private void performLoad(Command command) {
         // to do: load the repository in the file to the memory;
-        ;
+        
     }
 
     private void performInvalid() {

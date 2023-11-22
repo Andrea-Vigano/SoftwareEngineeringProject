@@ -6,6 +6,7 @@ import printer.PIRPrinter;
 import search.SearchCondition;
 import search.SearchStringParser;
 
+import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.Objects;
 
@@ -106,4 +107,13 @@ public abstract class PIRRepository<T extends PIR> {
     public void print(T pir) {
         this.printer.print(pir);
     }
+
+    public void save(PrintStream filestream) {
+        PrintStream buffer = this.printer.setPrintStream(filestream);
+        for (T pir: this.data) {
+            print(pir);
+        }
+        this.printer.setPrintStream(buffer);
+    }
+
 }

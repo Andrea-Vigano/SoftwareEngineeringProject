@@ -66,4 +66,8 @@ public class Command {
     public Boolean isContact() {
         return this.is(PIR_TYPES.CONTACT);
     }
+
+    public String getdir() {
+        return (isSave() || isLoad()) ? type : "";
+    }
 }
