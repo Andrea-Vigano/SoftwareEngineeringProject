@@ -10,6 +10,7 @@ public class CommandParser {
     final private PIRRepository<?>[] repositories;
     final private Scanner scanner;
     final private PrintStream printStream;
+    private boolean shouldExit = false;
     public CommandParser(PIRRepository<?>[] repositories, Scanner scanner, PrintStream printStream) {
         this.repositories = repositories;
         this.scanner = scanner;
@@ -31,11 +32,20 @@ public class CommandParser {
             performSave(command);
         } else if (command.isLoad()) {
             performLoad(command);
-        } else {        // Invalid input
+        } else if (command.isExit()) {
+            performExit();
+        }else {        // Invalid input
             performInvalid();
         }
 
+    }
 
+    private void performExit() {
+        this.shouldExit = true;  // Set the exit flag
+    }
+
+    public boolean shouldExit() {
+        return shouldExit;
     }
 
     private void performAdd(Command command) {
@@ -99,6 +109,7 @@ public class CommandParser {
             System.out.println("IOException");
         }
     }
+
 
     private void performLoad(Command command) {
         // to do: load the repository in the file to the memory;

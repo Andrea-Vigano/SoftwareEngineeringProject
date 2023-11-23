@@ -7,12 +7,15 @@ public class Command {
     private String type = "";
     public Command(String rawCommand) {
         if (!this.isExit()) {
-            String[] components = rawCommand.split(" ");
-            if (components.length != 2) { return;}  // Invalid input
-            operation = components[0];
-            type = components[1];
-        }
+            String[] components = rawCommand.split(" ",2);
+            if (components.length >= 1) {
+                operation = components[0];
+            }
 
+            if (components.length == 2) {
+                type = components[1];
+            }
+        }
     }
 
     private Boolean is(COMMAND_TYPES commandType) {
@@ -24,23 +27,23 @@ public class Command {
     }
 
     public Boolean isAdd() {
-        return this.is(COMMAND_TYPES.ADD);
+        return this.is(COMMAND_TYPES.ADD) && !type.isEmpty();
     }
 
     public Boolean isEdit() {
-        return this.is(COMMAND_TYPES.EDIT);
+        return this.is(COMMAND_TYPES.EDIT) && !type.isEmpty();
     }
 
     public Boolean isRm() {
-        return this.is(COMMAND_TYPES.RM);
+        return this.is(COMMAND_TYPES.RM) && !type.isEmpty();
     }
 
     public Boolean isFind() {
-        return this.is(COMMAND_TYPES.FIND);
+        return this.is(COMMAND_TYPES.FIND) && !type.isEmpty();
     }
 
     public Boolean isSearch() {
-        return this.is(COMMAND_TYPES.SEARCH);
+        return this.is(COMMAND_TYPES.SEARCH) && !type.isEmpty();
     }
 
     public Boolean isExit() {
