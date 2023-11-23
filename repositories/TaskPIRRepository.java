@@ -1,6 +1,6 @@
 package repositories;
 
-import factories.TastPIRFactory;
+import factories.TaskPIRFactory;
 import models.TaskPIR;
 import printer.TaskPIRPrinter;
 import search.TaskPIRSearchStringParser;
@@ -12,7 +12,7 @@ public class TaskPIRRepository extends PIRRepository<TaskPIR> {
     public TaskPIRRepository(Scanner scanner, PrintStream printStream) {
         super(
                 new TaskPIRPrinter(printStream),
-                new TastPIRFactory(scanner, printStream),
+                new TaskPIRFactory(scanner, printStream),
                 new TaskPIRSearchStringParser());
     }
 }

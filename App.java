@@ -31,7 +31,7 @@ public class App {
         Command currentCommand;
         do {
             printStream.println("\nPlease enter your command:");
-            String rawCommand = App.scanner.nextLine();
+            String rawCommand = App.scanner.nextLine().toLowerCase();
             currentCommand = new Command(rawCommand);
             commandParser.parse(currentCommand);
         } while (!commandParser.shouldExit());
