@@ -38,15 +38,15 @@ public class App {
     }
 
     private void printWelcomeMessage() {
-        printStream.println("Welcome to the Personal Information Manager!\n");
+        printStream.println("\nWelcome to the Personal Information Manager!\n");
         printStream.println("Commands:");
         printStream.println("- To add a new item: add [type]");
         printStream.println("- To edit an item: edit [type]");
         printStream.println("- To remove an item: rm [type]");
         printStream.println("- To find an item: find [type]");
         printStream.println("- To search for items: search [type]");
-        printStream.println("- To save the repositories: save [directory]");
-        printStream.println("- To load repositories from a file: load [file]");
+        printStream.println("- To save the repositories: save [file]");
+        printStream.println("- To load repositories from a file: load [file].pim");
         printStream.println("- To exit: exit\n");
         printStream.println("Example Usage:\n");
         printStream.println("1. Add a PlainText item:");
@@ -57,6 +57,31 @@ public class App {
         printStream.println("   [User provides details to edit the Task item]\n");
         printStream.println("3. Remove an Event item:");
         printStream.println("   Command: rm event");
-        printStream.println("    [User enters the ID of the Event item to be removed]\n");
+        printStream.println("   [User enters the ID of the Event item to be removed]\n");
+        printStream.println("4. Find a PlainText item:");
+        printStream.println("   Command: find plain-text");
+        printStream.println("   [User enters information to find PlainText item]\n");
+        printStream.println("5. Search a Task item:");
+        printStream.println("   Command: find task");
+        printStream.println("   [User enters condition for the Task item]");
+        printStream.println("""
+                   [Conditions:
+                    AND(),
+                    OR(),
+                    NOT(),
+                    CONTAINS(),
+                    EQUALS(),
+                    AFTER(),
+                    BEFORE()]
+                    [Example: BEFORE("2023/12/11 23:00")]
+                """);
+        printStream.println("6. Save your Personal Information Records as a file:");
+        printStream.println("   Command: save [name_of_file]");
+        printStream.println("   [User can save all created PIR information as a .pim file]\n");
+        printStream.println("7. Load your Personal Information Records from a file:");
+        printStream.println("   Command: load [name_of_file].pim");
+        printStream.println("   [User can load the created PIM file to add,edit,remove,search and find PIR]\n");
+        printStream.println("8. Exit from program:");
+        printStream.println("   Command: exit");
     }
 }
