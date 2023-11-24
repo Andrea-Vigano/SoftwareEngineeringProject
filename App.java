@@ -7,34 +7,44 @@ import java.io.PrintStream;
 import java.util.Scanner;
 
 public class App {
-    static private final Scanner scanner = IO.scanner;
-    static private final PrintStream printStream = IO.printStream;
+    private final Scanner scanner;
+    private final PrintStream printStream;
     private final CommandParser commandParser;
 
-    public App(PIRRepository<?>[] repositories) {
+    public App(Scanner scanner, PrintStream printStream) {
+        this.scanner = scanner;
+        this.printStream = printStream;
+        PIRRepository<?>[] repositories = {
+                new PlainTextPIRRepository(scanner, printStream),
+                new TaskPIRRepository(scanner, printStream),
+                new EventPIRRepository(scanner, printStream),
+                new ContactPIRRepository(scanner, printStream)
+        };
         this.commandParser = new CommandParser(repositories, scanner, printStream);
     }
 
     static public void main(String[] args) {
-        PIRRepository<?>[] repositories = {
-                new PlainTextPIRRepository(App.scanner, App.printStream),
-                new TaskPIRRepository(App.scanner, App.printStream),
-                new EventPIRRepository(App.scanner, App.printStream),
-                new ContactPIRRepository(App.scanner, App.printStream)
-        };
-        App app = new App(repositories);
+        App app = new App(IO.scanner, IO.printStream);
         app.printWelcomeMessage();
         app.run();
     }
 
     public void run() {
-        Command currentCommand;
         do {
             printStream.println("\nPlease enter your command:");
-            String rawCommand = App.scanner.nextLine().toLowerCase();
-            currentCommand = new Command(rawCommand);
-            commandParser.parse(currentCommand);
+            String rawCommand = "";
+            if (this.scanner.hasNext()) {    // this condition is for test
+                rawCommand = this.scanner.nextLine().toLowerCase();
+                runCommand(rawCommand);
+            }
+            else
+                break;
         } while (!commandParser.shouldExit());
+    }
+
+    public void runCommand(String rawCommand) {
+        Command currentCommand = new Command(rawCommand);
+        commandParser.parse(currentCommand);
     }
 
     private void printWelcomeMessage() {
