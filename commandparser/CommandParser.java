@@ -105,6 +105,8 @@ public class CommandParser {
             for (int index = 0; index < 4; ++index) {
                 fileStream.println(repo_list[index]);
                 repositories[index].save(fileStream);
+                // Add a comment line as a marker between repositories
+                fileStream.println("# --- End of " + repo_list[index] + " repository ---");
             }
         } catch (IOException e) {
             System.out.println("IOException");
@@ -114,19 +116,36 @@ public class CommandParser {
 
     private void performLoad(Command command) {
         try {
-            String[] repo_list = {"PlainText", "Task", "Event", "Contact"};
-            Scanner fileScanner = new Scanner(new File(command.getdir() + ".pim"));
+            if (!command.getdir().endsWith(".pim")) {
+                System.out.println("Invalid file format. Please provide a .pim file.");
+                return;
+            }
+
+            Scanner fileScanner = new Scanner(new File(command.getdir()));
 
             for (int index = 0; index < 4; ++index) {
-                // Skip the repository type line
-                fileScanner.nextLine();
-                // repositories[index].load(fileScanner);
+                if (!fileScanner.hasNextLine()) {
+                    System.out.println("Error: Incomplete data in the file. Aborting load.");
+                    break;
+                }
+
+                String repositoryType = fileScanner.nextLine().trim();
+
+                if (!isValidRepositoryType(repositoryType)) {
+                    System.out.println("Error: Invalid repository type found in the file. Aborting load.");
+                    break;
+                }
+                repositories[index].load(fileScanner, repositoryType);
             }
 
             fileScanner.close();
         } catch (IOException e) {
-            System.out.println("IOException");
+            System.out.println("IOException: " + e.getMessage());
         }
+    }
+    private boolean isValidRepositoryType(String repositoryType) {
+        return repositoryType.equals("PlainText") || repositoryType.equals("Task")
+                || repositoryType.equals("Event") || repositoryType.equals("Contact");
     }
 
     private void performInvalid() {

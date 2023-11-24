@@ -9,6 +9,7 @@ import search.SearchStringParser;
 import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.Objects;
+import java.util.Scanner;
 
 public abstract class PIRRepository<T extends PIR> {
     protected PIRPrinter<T> printer;
@@ -116,4 +117,38 @@ public abstract class PIRRepository<T extends PIR> {
         this.printer.setPrintStream(buffer);
     }
 
+    protected void replaceOrAdd(T pir) {
+        int index = indexOfId(pir.getId());
+        if (index != -1) {
+            data.set(index, pir);
+        } else {
+            data.add(pir);
+        }
+    }
+
+    private int indexOfId(Integer id) {
+        for (int i = 0; i < data.size(); i++) {
+            if (Objects.equals(data.get(i).getId(), id)) {
+                return i;
+            }
+        }
+        return -1;
+    }
+    public abstract void load(Scanner scanner);
+    public void load(Scanner scanner, String repositoryType) {
+        if ("PlainText".equals(repositoryType)) {
+            loadPlainText(scanner);
+        } else if ("Task".equals(repositoryType)) {
+            loadTask(scanner);
+        } else if ("Event".equals(repositoryType)) {
+            loadEvent(scanner);
+        } else if ("Contact".equals(repositoryType)) {
+            loadContact(scanner);
+        }
+    }
+
+    protected abstract void loadPlainText(Scanner scanner);
+    protected abstract void loadTask(Scanner scanner);
+    protected abstract void loadEvent(Scanner scanner);
+    protected abstract void loadContact(Scanner scanner);
 }
