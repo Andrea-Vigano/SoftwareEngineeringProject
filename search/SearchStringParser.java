@@ -21,7 +21,7 @@ public abstract class SearchStringParser<T extends PIR> {
             SearchCondition<T> conditionB = this.parse(arguments[1]);
             return conditionA.or(conditionB);
         } else if (this.isNot(condition)) {
-            SearchCondition<T> conditionA = this.parse(condition.substring(3, condition.length() - 1));
+            SearchCondition<T> conditionA = this.parse(condition.substring(4, condition.length() - 1));
             return conditionA.not();
         } else {
             return this.parseAtomicCondition(condition);
