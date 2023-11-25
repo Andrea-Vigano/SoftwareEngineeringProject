@@ -82,7 +82,10 @@ public class App {
                     CONTAINS(),
                     EQUALS(),
                     AFTER(),
-                    BEFORE()]
+                    BEFORE(),
+                    ALARMEQUALS(),
+                    ALARMAFTER(),
+                    ALARMBEFORE()]
                     [Example: BEFORE("2023/12/11 23:00")]
                 """);
         printStream.println("6. Save your Personal Information Records as a file:");

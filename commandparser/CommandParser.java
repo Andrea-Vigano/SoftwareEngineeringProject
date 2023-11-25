@@ -38,7 +38,6 @@ public class CommandParser {
         }else {        // Invalid input
             performInvalid();
         }
-
     }
 
     private void performExit() {

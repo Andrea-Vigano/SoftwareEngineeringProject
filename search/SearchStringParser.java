@@ -102,7 +102,7 @@ public abstract class SearchStringParser<T extends PIR> {
     }
 
     protected Boolean isAlarmEqual(String condition) {
-        return condition.startsWith(SEARCH_KEYWORDS.ALARMEQUAL.toString());
+        return condition.startsWith(SEARCH_KEYWORDS.ALARMEQUALS.toString());
     }
 
     protected Boolean isAlarmAfter(String condition) {

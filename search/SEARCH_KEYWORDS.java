@@ -8,7 +8,7 @@ public enum SEARCH_KEYWORDS {
     EQUALS(),
     AFTER(),
     BEFORE(),
-    ALARMEQUAL(),
+    ALARMEQUALS(),
     ALARMAFTER(),
     ALARMBEFORE()
 }
