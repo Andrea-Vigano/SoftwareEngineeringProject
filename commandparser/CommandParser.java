@@ -51,6 +51,10 @@ public class CommandParser {
 
     private void performAdd(Command command) {
         int index = this.getRepositoryIndex(command);
+        if (index == -1) {
+            this.printStream.println("Invalid PIR type");
+            return;
+        }
         Boolean result = repositories[index].createAndAdd();
         if (result) this.printStream.println("Successfully added PIR");
         else this.printStream.println("Failed to add PIR");
@@ -58,6 +62,10 @@ public class CommandParser {
 
     private void performEdit(Command command) {
         int index = this.getRepositoryIndex(command);
+        if (index == -1) {
+            this.printStream.println("Invalid PIR type");
+            return;
+        }
         Boolean result = repositories[index].createAndEdit();
         if (result) this.printStream.println("Successfully updated PIR");
         else this.printStream.println("Failed to update PIR");
@@ -68,6 +76,10 @@ public class CommandParser {
         Integer id = this.scanner.nextInt();
         this.scanner.nextLine();
         int index = this.getRepositoryIndex(command);
+        if (index == -1) {
+            this.printStream.println("Invalid PIR type");
+            return;
+        }
         Boolean result = repositories[index].remove(id);
         if (result) this.printStream.println("Successfully removed pir with id: " + id);
         else this.printStream.println("Unable to remove pir with id: " + id);
@@ -78,14 +90,22 @@ public class CommandParser {
         Integer id = this.scanner.nextInt();
         this.scanner.nextLine();
         int index = this.getRepositoryIndex(command);
+        if (index == -1) {
+            this.printStream.println("Invalid PIR type");
+            return;
+        }
         Boolean result = repositories[index].findAndPrint(id);
-        if (!result) this.printStream.println("Unable to find plain text PIR with id: " + id);
+        if (!result) this.printStream.println("Unable to find PIR with id: " + id);
     }
 
     private void performSearch(Command command) {
         this.printStream.println("Type the search condition you wish to apply: ");
         String condition = this.scanner.nextLine();
         int index = this.getRepositoryIndex(command);
+        if (index == -1) {
+            this.printStream.println("Invalid PIR type");
+            return;
+        }
         Boolean result = repositories[index].search(condition);
         if (!result) this.printStream.println("Unable to parse condition: " + condition);
     }
@@ -112,7 +132,6 @@ public class CommandParser {
             System.out.println("IOException");
         }
     }
-
 
     private void performLoad(Command command) {
         try {

@@ -6,6 +6,7 @@ import java.io.PrintStream;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public abstract class PIRFactory<T extends PIR> {
@@ -18,17 +19,23 @@ public abstract class PIRFactory<T extends PIR> {
     }
 
     public T createPIR() {
-        int id = this.getId();
-        return this.createPIR(id);
+        Integer id = this.getId();
+        if(id != null)
+            return this.createPIR(id);
+        return null;
     }
 
     protected abstract T createPIR(Integer id);
 
     private Integer getId() {
         printStream.println("Insert the id: ");
-        int id = this.scanner.nextInt();
-        this.scanner.nextLine();
-        return id;
+        try {
+            int id = this.scanner.nextInt();
+            this.scanner.nextLine();
+            return id;
+        } catch (InputMismatchException e) {
+            return null;
+        }
     }
 
     protected String getText(String message) {

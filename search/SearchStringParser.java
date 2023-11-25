@@ -66,6 +66,8 @@ public abstract class SearchStringParser<T extends PIR> {
                         indentLevel--;
                     } else if (compositeCondition.charAt(i) == ',' && indentLevel == 0) {
                         state = StringParsingStates.FOUND_SEPARATION_COMMA;
+                    } else {
+                        argumentA.append(compositeCondition.charAt(i));
                     }
                 }
                 case FOUND_SEPARATION_COMMA -> {
@@ -106,7 +108,7 @@ public abstract class SearchStringParser<T extends PIR> {
 
     protected LocalDateTime getEqualsDateTime(String condition) {
         // EQUALS("...")
-        String conditionString = condition.substring(8, condition.length() - 2);
+        String conditionString = condition.substring(7, condition.length() - 1);
         try {
             return LocalDateTime.parse(conditionString, formatter);
         } catch (DateTimeParseException e) {
@@ -116,7 +118,7 @@ public abstract class SearchStringParser<T extends PIR> {
 
     protected LocalDateTime getAfterDateTime(String condition) {
         // AFTER("...")
-        String conditionString = condition.substring(7, condition.length() - 2);
+        String conditionString = condition.substring(6, condition.length() - 1);
         try {
             return LocalDateTime.parse(conditionString, formatter);
         } catch (DateTimeParseException e) {
@@ -126,7 +128,7 @@ public abstract class SearchStringParser<T extends PIR> {
 
     protected LocalDateTime getBeforeDateTime(String condition) {
         // BEFORE("...")
-        String conditionString = condition.substring(8, condition.length() - 2);
+        String conditionString = condition.substring(7, condition.length() - 1);
         try {
             return LocalDateTime.parse(conditionString, formatter);
         } catch (DateTimeParseException e) {

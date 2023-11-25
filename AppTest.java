@@ -49,7 +49,6 @@ public class AppTest {
         
         String currentOutput = os.toString(StandardCharsets.UTF_8);
 
-
         assertEquals(expectedOutput, currentOutput);
     }
 }

@@ -30,7 +30,9 @@ public abstract class PIRRepository<T extends PIR> {
     }
     public Boolean createAndAdd() {
         T pir = this.pirFactory.createPIR();
-        return this.add(pir);
+        if (pir != null)
+            return this.add(pir);
+        return false;
     }
     protected Boolean isUniqueId(T pir) {
         for (T storedPir : data) {
