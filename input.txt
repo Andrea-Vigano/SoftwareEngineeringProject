@@ -1,0 +1,96 @@
+add plain-text
+1
+text 1
+add plain-text
+1
+new text
+add plain-text
+2
+text 2
+edit plain-text
+1
+new text
+find plain-text
+1
+rm plain-text
+1
+add plain-text
+3
+text 3
+search plain-text
+CONTAINS(text)
+add task
+1
+task1
+2023/12/01 12:20
+edit task
+1
+newtask
+2023/12/10 12:20
+find task
+1
+add task
+2
+task2
+2024/01/01 12:00
+search task
+CONTAINS(task)
+rm task
+2
+add contact
+1
+Charlie
+HongKong
+Hung Lai Road
+1
+59280000
+find contact
+1
+edit contact
+1
+Charlie
+HongKong
+Hong Lai Road
+1
+59280001
+search contact
+CONTAINS(Charlie)
+search contact
+CONTAINS(Alice)
+rm contact
+1
+add event
+1
+event1
+2023/12/01 12:00
+1
+2023/12/01 11:00
+edit event
+1
+new event
+2023/11/01 12:00
+1
+2023/11/01 11:00
+find event
+1
+search event
+CONTAINS(event)
+rm event
+1
+add event
+1
+event
+2023/12/01 12:00
+1
+2023/12/01 11:00
+add contact
+1
+Charlie
+HongKong
+Hung Lai Road
+1
+59280001
+save savefile
+load savefile.pim
+find plain-text
+10

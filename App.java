@@ -25,11 +25,11 @@ public class App {
 
     static public void main(String[] args) {
         App app = new App(IO.scanner, IO.printStream);
-        app.printWelcomeMessage();
         app.run();
     }
 
     public void run() {
+        printWelcomeMessage();
         do {
             printStream.println("\nPlease enter your command:");
             String rawCommand = "";
