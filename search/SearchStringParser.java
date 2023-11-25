@@ -101,6 +101,18 @@ public abstract class SearchStringParser<T extends PIR> {
         return condition.startsWith(SEARCH_KEYWORDS.BEFORE.toString());
     }
 
+    protected Boolean isAlarmEqual(String condition) {
+        return condition.startsWith(SEARCH_KEYWORDS.ALARMEQUAL.toString());
+    }
+
+    protected Boolean isAlarmAfter(String condition) {
+        return condition.startsWith(SEARCH_KEYWORDS.ALARMAFTER.toString());
+    }
+
+    protected Boolean isAlarmBefore(String condition) {
+        return condition.startsWith(SEARCH_KEYWORDS.ALARMBEFORE.toString());
+    }
+
     protected String getContainsString(String condition) {
         // CONTAINS("...")
         return condition.substring(10, condition.length() - 2);

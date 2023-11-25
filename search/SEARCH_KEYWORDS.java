@@ -7,5 +7,8 @@ public enum SEARCH_KEYWORDS {
     CONTAINS(),
     EQUALS(),
     AFTER(),
-    BEFORE()
+    BEFORE(),
+    ALARMEQUAL(),
+    ALARMAFTER(),
+    ALARMBEFORE()
 }
