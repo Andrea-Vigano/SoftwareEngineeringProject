@@ -11,20 +11,20 @@ public class App {
     private final PrintStream printStream;
     private final CommandParser commandParser;
 
-    public App(Scanner scanner, PrintStream printStream) {
+    public App(Scanner scanner, PrintStream printStream, PIRRepository<?>[] repositories) {
         this.scanner = scanner;
         this.printStream = printStream;
-        PIRRepository<?>[] repositories = {
-                new PlainTextPIRRepository(scanner, printStream),
-                new TaskPIRRepository(scanner, printStream),
-                new EventPIRRepository(scanner, printStream),
-                new ContactPIRRepository(scanner, printStream)
-        };
         this.commandParser = new CommandParser(repositories, scanner, printStream);
     }
 
     static public void main(String[] args) {
-        App app = new App(IO.scanner, IO.printStream);
+        PIRRepository<?>[] repositories = {
+                new PlainTextPIRRepository(IO.scanner, IO.printStream),
+                new TaskPIRRepository(IO.scanner, IO.printStream),
+                new EventPIRRepository(IO.scanner, IO.printStream),
+                new ContactPIRRepository(IO.scanner, IO.printStream)
+        };
+        App app = new App(IO.scanner, IO.printStream, repositories);
         app.run();
     }
 

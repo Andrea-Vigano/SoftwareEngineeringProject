@@ -4,8 +4,6 @@ import models.EventPIR;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeParseException;
-import java.util.ArrayList;
-import java.util.function.Function;
 
 public class EventPIRSearchStringParser extends SearchStringParser<EventPIR> {
     @Override

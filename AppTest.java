@@ -2,6 +2,7 @@ import io.IO;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import repositories.*;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -31,8 +32,14 @@ public class AppTest {
 
         ByteArrayOutputStream os = new ByteArrayOutputStream();
         PrintStream printStream = new PrintStream(os);
+        PIRRepository<?>[] repositories = {
+                new PlainTextPIRRepository(scanner, printStream),
+                new TaskPIRRepository(scanner, printStream),
+                new EventPIRRepository(scanner, printStream),
+                new ContactPIRRepository(scanner, printStream)
+        };
         
-        App app = new App(scanner, printStream);
+        App app = new App(scanner, printStream, repositories);
         app.run();
         
         // get expected output from file output.txt
