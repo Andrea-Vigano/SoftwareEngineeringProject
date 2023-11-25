@@ -115,7 +115,7 @@ public abstract class SearchStringParser<T extends PIR> {
 
     protected String getContainsString(String condition) {
         // CONTAINS("...")
-        return condition.substring(10, condition.length() - 2);
+        return condition.substring(9, condition.length() - 1);
     }
 
     protected LocalDateTime getEqualsDateTime(String condition) {
