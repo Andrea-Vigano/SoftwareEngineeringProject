@@ -38,7 +38,10 @@ Example Usage:
     CONTAINS(),
     EQUALS(),
     AFTER(),
-    BEFORE()]
+    BEFORE(),
+    ALARMEQUALS(),
+    ALARMAFTER(),
+    ALARMBEFORE()]
     [Example: BEFORE("2023/12/11 23:00")]
 
 6. Save your Personal Information Records as a file:
@@ -91,6 +94,23 @@ Type the search condition you wish to apply:
 3: text 3
 
 Please enter your command:
+Type the search condition you wish to apply: 
+2: text 2
+
+Please enter your command:
+Type the search condition you wish to apply: 
+2: text 2
+
+Please enter your command:
+Type the search condition you wish to apply: 
+2: text 2
+3: text 3
+
+Please enter your command:
+Type the search condition you wish to apply: 
+3: text 3
+
+Please enter your command:
 Insert the id: 
 Type the description of the task you wish to store: 
 Successfully added PIR
@@ -116,6 +136,29 @@ Type the search condition you wish to apply:
 	Due to: 2023-12-10T12:20
 2: task2
 	Due to: 2024-01-01T12:00
+
+Please enter your command:
+Type the search condition you wish to apply: 
+1: newtask
+	Due to: 2023-12-10T12:20
+
+Please enter your command:
+Type the search condition you wish to apply: 
+1: newtask
+	Due to: 2023-12-10T12:20
+
+Please enter your command:
+Type the search condition you wish to apply: 
+1: newtask
+	Due to: 2023-12-10T12:20
+
+Please enter your command:
+Type the search condition you wish to apply: 
+2: task2
+	Due to: 2024-01-01T12:00
+
+Please enter your command:
+Type the search condition you wish to apply: 
 
 Please enter your command:
 Insert the id: 
@@ -153,6 +196,21 @@ Type the search condition you wish to apply:
 
 Please enter your command:
 Type the search condition you wish to apply: 
+1: Charlie
+	HongKong Hong Lai Road 1
+	59280001
+
+Please enter your command:
+Type the search condition you wish to apply: 
+1: Charlie
+	HongKong Hong Lai Road 1
+	59280001
+
+Please enter your command:
+Type the search condition you wish to apply: 
+
+Please enter your command:
+Type the search condition you wish to apply: 
 
 Please enter your command:
 Insert the id: 
@@ -183,6 +241,48 @@ Type the search condition you wish to apply:
 	With alarms: [2023-11-01T11:00]
 
 Please enter your command:
+Type the search condition you wish to apply: 
+
+Please enter your command:
+Type the search condition you wish to apply: 
+1: new event
+	Starting at: 2023-11-01T12:00
+	With alarms: [2023-11-01T11:00]
+
+Please enter your command:
+Type the search condition you wish to apply: 
+1: new event
+	Starting at: 2023-11-01T12:00
+	With alarms: [2023-11-01T11:00]
+
+Please enter your command:
+Type the search condition you wish to apply: 
+1: new event
+	Starting at: 2023-11-01T12:00
+	With alarms: [2023-11-01T11:00]
+
+Please enter your command:
+Type the search condition you wish to apply: 
+1: new event
+	Starting at: 2023-11-01T12:00
+	With alarms: [2023-11-01T11:00]
+
+Please enter your command:
+Type the search condition you wish to apply: 
+1: new event
+	Starting at: 2023-11-01T12:00
+	With alarms: [2023-11-01T11:00]
+
+Please enter your command:
+Type the search condition you wish to apply: 
+1: new event
+	Starting at: 2023-11-01T12:00
+	With alarms: [2023-11-01T11:00]
+
+Please enter your command:
+Type the search condition you wish to apply: 
+
+Please enter your command:
 Insert the id: 
 Successfully removed pir with id: 1
 
@@ -206,7 +306,57 @@ Please enter your command:
 Please enter your command:
 
 Please enter your command:
+
+Please enter your command:
 Insert the id: 
 Unable to find PIR with id: 10
+
+Please enter your command:
+Insert the id: 
+Unable to remove pir with id: 10
+
+Please enter your command:
+Type the search condition you wish to apply: 
+2: text 2
+3: text 3
+
+Please enter your command:
+Invalid PIR type
+
+Please enter your command:
+Invalid PIR type
+
+Please enter your command:
+Invalid PIR type
+
+Please enter your command:
+Invalid PIR type
+
+Please enter your command:
+Invalid PIR type
+
+Please enter your command:
+Invalid Input
+
+Please enter your command:
+Type the search condition you wish to apply: 
+Unable to parse condition: strangeCondition
+
+Please enter your command:
+Type the search condition you wish to apply: 
+Unable to parse condition: strangeCondition
+
+Please enter your command:
+Type the search condition you wish to apply: 
+Unable to parse condition: strangeCondition
+
+Please enter your command:
+Type the search condition you wish to apply: 
+Unable to parse condition: strangeCondition
+
+Please enter your command:
+Insert the id: 
+Type the description of the task you wish to store: 
+Failed to add PIR
 
 Please enter your command:

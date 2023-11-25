@@ -71,40 +71,40 @@ public class CommandParser {
     }
 
     private void performRm(Command command) {
-        this.printStream.println("Insert the id: ");
-        Integer id = this.scanner.nextInt();
-        this.scanner.nextLine();
         int index = this.getRepositoryIndex(command);
         if (index == -1) {
             this.printStream.println("Invalid PIR type");
             return;
         }
+        this.printStream.println("Insert the id: ");
+        Integer id = this.scanner.nextInt();
+        this.scanner.nextLine();
         Boolean result = repositories[index].remove(id);
         if (result) this.printStream.println("Successfully removed pir with id: " + id);
         else this.printStream.println("Unable to remove pir with id: " + id);
     }
 
     private void performFind(Command command) {
-        this.printStream.println("Insert the id: ");
-        Integer id = this.scanner.nextInt();
-        this.scanner.nextLine();
         int index = this.getRepositoryIndex(command);
         if (index == -1) {
             this.printStream.println("Invalid PIR type");
             return;
         }
+        this.printStream.println("Insert the id: ");
+        Integer id = this.scanner.nextInt();
+        this.scanner.nextLine();
         Boolean result = repositories[index].findAndPrint(id);
         if (!result) this.printStream.println("Unable to find PIR with id: " + id);
     }
 
     private void performSearch(Command command) {
-        this.printStream.println("Type the search condition you wish to apply: ");
-        String condition = this.scanner.nextLine();
         int index = this.getRepositoryIndex(command);
         if (index == -1) {
             this.printStream.println("Invalid PIR type");
             return;
         }
+        this.printStream.println("Type the search condition you wish to apply: ");
+        String condition = this.scanner.nextLine();
         Boolean result = repositories[index].search(condition);
         if (!result) this.printStream.println("Unable to parse condition: " + condition);
     }
@@ -167,6 +167,6 @@ public class CommandParser {
     }
 
     private void performInvalid() {
-        this.printStream.println("Invalid Input!");
+        this.printStream.println("Invalid Input");
     }
 }

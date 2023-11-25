@@ -23,7 +23,6 @@ public class TaskPIRSearchStringParser extends SearchStringParser<TaskPIR> {
             if (equalsTimeStamp == null) return null;
             return new SearchCondition<>(pir -> pir.getDeadline().isBefore(equalsTimeStamp));
         }
-        System.out.println("Fuck et");
         return null;
     }
 }

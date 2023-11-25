@@ -19,6 +19,14 @@ add plain-text
 text 3
 search plain-text
 CONTAINS(text)
+search plain-text
+CONTAINS(text 2)
+search plain-text
+AND(CONTAINS(te),CONTAINS(xt 2))
+search plain-text
+OR(CONTAINS(text 2),CONTAINS(text 3))
+search plain-text
+NOT(CONTAINS(text 2))
 add task
 1
 task1
@@ -35,6 +43,16 @@ task2
 2024/01/01 12:00
 search task
 CONTAINS(task)
+search task
+BEFORE(2023/12/20 12:00)
+search task
+EQUALS(2023/12/10 12:20)
+search task
+NOT(CONTAINS(task2))
+search task
+AND(CONTAINS(task),AFTER(2023/12/20 12:00))
+search task
+AND(CONTAINS(task2),CONTAINS(newtask))
 rm task
 2
 add contact
@@ -56,6 +74,12 @@ Hong Lai Road
 search contact
 CONTAINS(Charlie)
 search contact
+AND(CONTAINS(Char),CONTAINS(lie))
+search contact
+OR(CONTAINS(CHARLIE),CONTAINS(Charlie))
+search contact
+NOT(CONTAINS(Charlie))
+search contact
 CONTAINS(Alice)
 rm contact
 1
@@ -75,6 +99,22 @@ find event
 1
 search event
 CONTAINS(event)
+search event
+AND(CONTAINS(event),CONTAINS(task))
+search event
+BEFORE(2023/11/02 12:00)
+search event
+AFTER(2023/11/01 10:00)
+search event
+EQUALS(2023/11/01 12:00)
+search event
+ALARMBEFORE(2023/11/02 12:00)
+search event
+ALARMAFTER(2023/11/01 10:00)
+search event
+ALARMEQUALS(2023/11/01 11:00)
+search event
+NOT(CONTAINS(event))
 rm event
 1
 add event
@@ -91,6 +131,29 @@ Hung Lai Road
 1
 59280001
 save savefile
+load invalidFile
 load savefile.pim
 find plain-text
 10
+rm plain-text
+10
+search plain-text
+CONTAINS()
+add invalidType
+edit invalidType
+find invalidType
+rm invalidType
+search invalidType
+strange_input
+search plain-text
+strangeCondition
+search task
+strangeCondition
+search contact
+strangeCondition
+search event
+strangeCondition
+add task
+10
+task with invalid timestamp
+badTimeStamp
