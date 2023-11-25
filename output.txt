@@ -1,0 +1,212 @@
+Welcome to the Personal Information Manager!
+
+Commands:
+- To add a new item: add [type]
+- To edit an item: edit [type]
+- To remove an item: rm [type]
+- To find an item: find [type]
+- To search for items: search [type]
+- To save the repositories: save [file]
+- To load repositories from a file: load [file].pim
+- To exit: exit
+
+Example Usage:
+
+1. Add a PlainText item:
+   Command: add plain-text
+   [User enters information for the PlainText item]
+
+2. Edit a Task item:
+   Command: edit task
+   [User provides details to edit the Task item]
+
+3. Remove an Event item:
+   Command: rm event
+   [User enters the ID of the Event item to be removed]
+
+4. Find a PlainText item:
+   Command: find plain-text
+   [User enters information to find PlainText item]
+
+5. Search a Task item:
+   Command: find task
+   [User enters condition for the Task item]
+   [Conditions:
+    AND(),
+    OR(),
+    NOT(),
+    CONTAINS(),
+    EQUALS(),
+    AFTER(),
+    BEFORE()]
+    [Example: BEFORE("2023/12/11 23:00")]
+
+6. Save your Personal Information Records as a file:
+   Command: save [name_of_file]
+   [User can save all created PIR information as a .pim file]
+
+7. Load your Personal Information Records from a file:
+   Command: load [name_of_file].pim
+   [User can load the created PIM file to add,edit,remove,search and find PIR]
+
+8. Exit from program:
+   Command: exit
+
+Please enter your command:
+Insert the id: 
+Type the new content you wish to store: 
+Successfully added PIR
+
+Please enter your command:
+Insert the id: 
+Type the new content you wish to store: 
+Failed to add PIR
+
+Please enter your command:
+Insert the id: 
+Type the new content you wish to store: 
+Successfully added PIR
+
+Please enter your command:
+Insert the id: 
+Type the new content you wish to store: 
+Successfully updated PIR
+
+Please enter your command:
+Insert the id: 
+1: new text
+
+Please enter your command:
+Insert the id: 
+Successfully removed pir with id: 1
+
+Please enter your command:
+Insert the id: 
+Type the new content you wish to store: 
+Successfully added PIR
+
+Please enter your command:
+Type the search condition you wish to apply: 
+2: text 2
+3: text 3
+
+Please enter your command:
+Insert the id: 
+Type the description of the task you wish to store: 
+Successfully added PIR
+
+Please enter your command:
+Insert the id: 
+Type the description of the task you wish to store: 
+Successfully updated PIR
+
+Please enter your command:
+Insert the id: 
+1: newtask
+	Due to: 2023-12-10T12:20
+
+Please enter your command:
+Insert the id: 
+Type the description of the task you wish to store: 
+Successfully added PIR
+
+Please enter your command:
+Type the search condition you wish to apply: 
+1: newtask
+	Due to: 2023-12-10T12:20
+2: task2
+	Due to: 2024-01-01T12:00
+
+Please enter your command:
+Insert the id: 
+Successfully removed pir with id: 2
+
+Please enter your command:
+Insert the id: 
+Type the name of the contact you wish to store: 
+Type the city of the contact you wish to store: 
+Type the street of the contact you wish to store: 
+Type the street number of the contact you wish to store: 
+Type the phone number of the contact you wish to store: 
+Successfully added PIR
+
+Please enter your command:
+Insert the id: 
+1: Charlie
+	HongKong Hung Lai Road 1
+	59280000
+
+Please enter your command:
+Insert the id: 
+Type the name of the contact you wish to store: 
+Type the city of the contact you wish to store: 
+Type the street of the contact you wish to store: 
+Type the street number of the contact you wish to store: 
+Type the phone number of the contact you wish to store: 
+Successfully updated PIR
+
+Please enter your command:
+Type the search condition you wish to apply: 
+1: Charlie
+	HongKong Hong Lai Road 1
+	59280001
+
+Please enter your command:
+Type the search condition you wish to apply: 
+
+Please enter your command:
+Insert the id: 
+Successfully removed pir with id: 1
+
+Please enter your command:
+Insert the id: 
+Type the description of the event you wish to store: 
+How many alarms do you wish to set: 
+Successfully added PIR
+
+Please enter your command:
+Insert the id: 
+Type the description of the event you wish to store: 
+How many alarms do you wish to set: 
+Successfully updated PIR
+
+Please enter your command:
+Insert the id: 
+1: new event
+	Starting at: 2023-11-01T12:00
+	With alarms: [2023-11-01T11:00]
+
+Please enter your command:
+Type the search condition you wish to apply: 
+1: new event
+	Starting at: 2023-11-01T12:00
+	With alarms: [2023-11-01T11:00]
+
+Please enter your command:
+Insert the id: 
+Successfully removed pir with id: 1
+
+Please enter your command:
+Insert the id: 
+Type the description of the event you wish to store: 
+How many alarms do you wish to set: 
+Successfully added PIR
+
+Please enter your command:
+Insert the id: 
+Type the name of the contact you wish to store: 
+Type the city of the contact you wish to store: 
+Type the street of the contact you wish to store: 
+Type the street number of the contact you wish to store: 
+Type the phone number of the contact you wish to store: 
+Successfully added PIR
+
+Please enter your command:
+
+Please enter your command:
+
+Please enter your command:
+Insert the id: 
+Unable to find PIR with id: 10
+
+Please enter your command:

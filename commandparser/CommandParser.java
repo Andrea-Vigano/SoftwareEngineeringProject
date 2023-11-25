@@ -79,7 +79,7 @@ public class CommandParser {
         this.scanner.nextLine();
         int index = this.getRepositoryIndex(command);
         Boolean result = repositories[index].findAndPrint(id);
-        if (!result) this.printStream.println("Unable to find plain text PIR with id: " + id);
+        if (!result) this.printStream.println("Unable to find PIR with id: " + id);
     }
 
     private void performSearch(Command command) {
